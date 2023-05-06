@@ -17,25 +17,31 @@ public class Main {
             String row = br.readLine();
             for (int j = 0; j < cols; j++) {
                 map[i][j] = row.charAt(j);
+                if (row.charAt(j) == 'H') {
+                    xH = i;
+                    yH = j;
+                }
             }
         }
-        Solution solution = new Solution(map);
-        for (int i = 0; i < rows; i++) {
+        Solution solution = new Solution(map,xH,yH);
+        //Print do mapa
+        /**
+         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 System.out.print(map[i][j]);
             }
             System.out.println();
-        }
+        }*/
 
-        for (int k = 0; k < numTests; k++) {
-            String[] input = br.readLine().split(" ");
-            int xInit = Integer.parseInt(input[0]) - 1;
-            int yInit = Integer.parseInt(input[1]) - 1;
-            solution.hasPath(xInit, yInit);
-            if (solution.hasPath(xInit, yInit))
-                System.out.println(solution.getNumPlays());
-            else
-                System.out.println(STUCK);
-        }
+        //for (int k = 0; k < numTests; k++) {
+        String[] input = br.readLine().split(" ");
+        //comeca no 0 entao pomos-1
+        int xInit = Integer.parseInt(input[0]) - 1;
+        int yInit = Integer.parseInt(input[1]) - 1;
+        if (solution.hasPath(xInit, yInit))
+            System.out.println(solution.getNumPlays());
+        else
+            System.out.println(STUCK);
+        //}
     }
 }
