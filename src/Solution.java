@@ -33,7 +33,7 @@ public class Solution {
                 }
                 x -= dir[0];
                 y -= dir[1];
-
+                //tou cofiante
                 // Furthest (x,y)
                 if (!visited[x][y]) {
                     System.out.println(x + " - " + y);
