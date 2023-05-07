@@ -57,7 +57,6 @@ public class Main {
                 System.out.println("TRUE");
             else
                 System.out.println(STUCK);
-
         }
     }
 }
