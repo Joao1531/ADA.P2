@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     private static final String STUCK = "Stuck";
@@ -15,6 +17,7 @@ public class Main {
         /* CREATE STRUCTS */
         int[][] map = new int[rows][cols];
         int xH = Integer.MAX_VALUE, yH = Integer.MAX_VALUE;
+        List<String> results = new ArrayList<>();
 
         /* RECEBER LINHAS DO MAPA DE INPUT E CONVERTER PARA MAPA DE INTS PARA FACILITAR */
         for (int i = 0; i < rows; i++) {
@@ -37,26 +40,25 @@ public class Main {
         }
         Solution solution = new Solution();
         //Print do mapa
-        /*for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print(map[i][j]);
-            }
-            System.out.println();
-        }*/
+
 
         for (int k = 0; k < numTests; k++) {
             String[] input = br.readLine().split(" ");
-           // System.out.println(input[0] + "+" + input[1]);
+
 
             int xInit = Integer.parseInt(input[0]) - 1;
             int yInit = Integer.parseInt(input[1]) - 1;
-            //System.out.println("HOLE: " + xH + " - " + yH);
-            //System.out.println("INICIO: " + xInit + " - " + yInit);
 
-            if (solution.hasPath(map, new int[]{xInit, yInit}, new int[]{xH, yH}) )
-                System.out.println("TRUE");
+
+            if (solution.hasPath(map, new int[]{xInit, yInit}, new int[]{xH, yH}))
+                results.add(String.valueOf(solution.getMinPlays()));
             else
-                System.out.println(STUCK);
+                results.add(STUCK);
+
         }
+        for (String result : results) {
+            System.out.println(result);
+        }
+
     }
 }
