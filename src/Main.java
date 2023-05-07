@@ -30,12 +30,12 @@ public class Main {
 
                 //GUARDAR COORDENADAS NO HOLE
                 if (map[i][j] == 2) {
-                    xH = i - 1;
-                    yH = j - 1;
+                    xH = i;
+                    yH = j;
                 }
             }
         }
-        Solution solution = new Solution(map);
+        Solution solution = new Solution();
         //Print do mapa
         /*for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -44,17 +44,20 @@ public class Main {
             System.out.println();
         }*/
 
-        //for (int k = 0; k < numTests; k++) {
-        String[] input = br.readLine().split(" ");
+        for (int k = 0; k < numTests; k++) {
+            String[] input = br.readLine().split(" ");
+           // System.out.println(input[0] + "+" + input[1]);
 
-        int xInit = Integer.parseInt(input[0]) - 1;
-        int yInit = Integer.parseInt(input[1]) - 1;
+            int xInit = Integer.parseInt(input[0]) - 1;
+            int yInit = Integer.parseInt(input[1]) - 1;
+            //System.out.println("HOLE: " + xH + " - " + yH);
+            //System.out.println("INICIO: " + xInit + " - " + yInit);
 
-        if (solution.hasPath(new int[]{xInit, yInit}))
-            System.out.println("TRUE");
-        else
-            System.out.println(STUCK);
+            if (solution.hasPath(map, new int[]{xInit, yInit}, new int[]{xH, yH}) )
+                System.out.println("TRUE");
+            else
+                System.out.println(STUCK);
 
-        //}
+        }
     }
 }
