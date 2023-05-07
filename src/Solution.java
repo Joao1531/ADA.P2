@@ -11,14 +11,14 @@ public class Solution {
         queue.add(start);
         visited[start[0]][start[1]] = true;
         numPlays = 0;
-        int [] countPlays = new int[4];
+
         while (!queue.isEmpty()) {
             int[] s = queue.remove();
             System.out.println("CURR COORDS: " + s[0] + " - " + s[1]);
-            numPlays++;
+
+
             // The furthest point in four directions
             for (int[] dir : dirs) {
-
                 int x = s[0] + dir[0];
                 int y = s[1] + dir[1];
 
@@ -36,7 +36,9 @@ public class Solution {
 
                 // Furthest (x,y)
                 if (!visited[x][y]) {
+                    System.out.println(x + " - " + y);
                     queue.add(new int[]{x, y});
+                    numPlays++;
                     visited[x][y] = true;
                 }
             }
