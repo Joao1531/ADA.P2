@@ -21,7 +21,6 @@ public class Main {
             //RECEBE LINHA
             String row = br.readLine();
 
-
             for (int j = 0; j < cols; j++) {
                 //POR CADA INDEX CONVERTE '.' -> 0 || 'O' -> 1 || 'H'-> 2
                 if (row.charAt(j) == '.') map[i][j] = 0;
@@ -46,15 +45,15 @@ public class Main {
 
         for (int k = 0; k < numTests; k++) {
             String[] input = br.readLine().split(" ");
-           // System.out.println(input[0] + "+" + input[1]);
+            // System.out.println(input[0] + "+" + input[1]);
 
             int xInit = Integer.parseInt(input[0]) - 1;
             int yInit = Integer.parseInt(input[1]) - 1;
             //System.out.println("HOLE: " + xH + " - " + yH);
             //System.out.println("INICIO: " + xInit + " - " + yInit);
 
-            if (solution.hasPath(map, new int[]{xInit, yInit}, new int[]{xH, yH}) )
-                System.out.println("TRUE");
+            if (solution.hasPath(map, new int[]{xInit, yInit}, new int[]{xH, yH}))
+                System.out.println(solution.getNumPlays());
             else
                 System.out.println(STUCK);
         }
