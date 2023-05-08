@@ -55,6 +55,7 @@ public class Main {
             else
                 results.add(STUCK);
 
+            
         }
         for (String result : results) {
             System.out.println(result);

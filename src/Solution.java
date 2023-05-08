@@ -3,10 +3,10 @@ import java.util.Queue;
 
 public class Solution {
     private int minPlays;
-    private static int[] UP = new int[]{0, -1};
-    private static int[] DOWN = new int[]{0, 1};
-    private static int[] LEFT = new int[]{-1, 0};
-    private static int[] RIGHT = new int[]{1, 0};
+    private static int[] UP = {-1, 0};
+    private static int[] DOWN = {1,0};
+    private static int[] LEFT = {0,-1};
+    private static int[] RIGHT = {0,1};
 
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
         boolean[][] visited = new boolean[maze.length][maze[0].length];
@@ -18,14 +18,16 @@ public class Solution {
 
         while (!queue.isEmpty()) {
 
-            MazeSphere sphere = queue.remove();
+            MazeSphere sphere = queue.poll();
             //System.out.println("CURR COORDS: " + sphere.x + " - " + sphere.y);
 
 
             // The furthest point in four directions
             for (int[] dir : dirs) {
+                //System.out.println(sphere.x + " - " + sphere.y);
                 int x = sphere.x + dir[0];
                 int y = sphere.y + dir[1];
+                //System.out.println(x + " - " + y);
 
                 // move Furthest straight-line distance
                 while (x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && (maze[x][y] == 0 || maze[x][y] == 2)) {
@@ -50,6 +52,7 @@ public class Solution {
                     queue.add(new MazeSphere(x, y, sphere.numPlays));
                     visited[x][y] = true;
                 }
+                System.out.println("NUM PLAYS: " + sphere.numPlays);
             }
         }
         return false;
