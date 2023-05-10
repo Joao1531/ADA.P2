@@ -8,10 +8,13 @@ public class Solution {
     private static final int[] LEFT = {0, -1};
     private static final int[] RIGHT = {0, 1};
 
+    private static final char WALL = 'O';
+
+
     public Solution() {
     }
 
-    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+    public boolean hasPath(char[][] maze, int[] start, int[] destination) {
         boolean[][] visited = new boolean[maze.length][maze[0].length];
         int[][] dirs = new int[][]{UP, DOWN, LEFT, RIGHT};
         Queue<int[]> queue = new LinkedList<>();
@@ -28,17 +31,22 @@ public class Solution {
                 for (int[] dir : dirs) {
                     int x = s[0] + dir[0];
                     int y = s[1] + dir[1];
-                    while (x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && (maze[x][y] != 1)) {
+
+                    while (x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && (maze[x][y] != WALL)) {
                         if (x == destination[0] && y == destination[1]) {
                             flag = true;
                             break;
                         }
+
                         x += dir[0];
                         y += dir[1];
                     }
-                    if(x < 0 || y < 0 || x >= maze.length || y >= maze[0].length)continue;
+
+                    if (x < 0 || y < 0 || x >= maze.length || y >= maze[0].length) continue;
+
                     x -= dir[0];
                     y -= dir[1];
+
                     if (!visited[x][y]) {
                         queue.add(new int[]{x, y});
                         visited[x][y] = true;
