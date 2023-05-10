@@ -1,6 +1,22 @@
+/**
+ * Segundo trabalho pratico de ADA
+ * @author Jose Romano 59241
+ * @author Joao Lopes 60055
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/* Main class */
+
+/**
+ * The main method takes input from the user and calls the Solution class to find the number of plays needed to reach the
+ * destination 'H' from the given start point. If there is no possible path, the output will be "Stuck".
+ *
+ * @param args An array of String objects that represents the command-line arguments passed to the program.
+ * @throws IOException If an I/O error occurs.
+ */
 
 public class Main {
     private static final String STUCK = "Stuck";
@@ -16,6 +32,7 @@ public class Main {
         char[][] map = new char[rows][cols];
         Solution solution = new Solution();
 
+        // Initialize the map with user input.
         for (int i = 0; i < rows; i++) {
             String row = br.readLine();
 
@@ -28,8 +45,8 @@ public class Main {
             }
         }
 
-
-
+        // Iterates over the user input and calls the Solution class to find the number of plays required to reach the
+        // destination point, known as "HOLE".
         for (int k = 0; k < numTests; k++) {
             String[] input = br.readLine().split(" ");
             int xInit = Integer.parseInt(input[0]) - 1;
